@@ -52,6 +52,7 @@ use the editor.
 
 ## Exam collections
 - Build exam catalog pages, records and viewer index entries with `scripts/build_exams_catalog.py` from the exam repository tree, and wire class hubs to them with `scripts/link_exams_menus.py`, so adding a class folder needs no hand-edited catalog.
+- Register empty exam collections for known classes as well as populated ones, so class buttons always reach a valid documents page.
 
 ## Visitor notices
 - The install prompt is the only visitor notice; it opens only when the browser reports the app is installable.
