@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Link } from '@tanstack/react-router';
-import { ArrowLeft } from 'lucide-react';
+import { ArrowLeft, ExternalLink } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { DocumentDownload, DocumentShare } from './document-actions';
 import { DocumentGallery } from './document-gallery';
@@ -31,7 +31,7 @@ export function DocumentDetail({ data, context }: { data: DocumentData; context:
   };
   return <main className="document-detail"><Button asChild variant="source" size="source" className="document-back">{context.source === '/search' || context.source === 'search' ? <Link to="/search" search={{ query: context.query ?? '', page: context.page ?? 1, sort: context.sort === 'title-asc' || context.sort === 'title-desc' ? context.sort : 'source', type: context.type ?? 'all', layout: context.layout === 'list' ? 'list' : 'grid' }}><ArrowLeft size={18} />Back to search results</Link> : <Link {...(data.path.startsWith('more/') ? { to: '/more/$repo' as const, params: { repo: data.path.slice(5) } } : { to: '/$' as const, params: { _splat: data.path } })}><ArrowLeft size={18} />{data.category}</Link>}</Button>
     <section className="document-overview"><h1>{resourceTitle(data.item)}</h1>
-      <div className="dg-card-actions"><DocumentDownload item={data.item} /><DocumentShare item={data.item} /><a className="document-original" href={data.item.pdfUrl} target="_blank" rel="noopener noreferrer">Open original file</a></div>
+      <div className="dg-card-actions"><DocumentDownload item={data.item} /><DocumentShare item={data.item} /><a className="document-original" href={data.item.pdfUrl} target="_blank" rel="noopener noreferrer"><ExternalLink size={18} aria-hidden="true" />Open original</a></div>
     </section>
     {isPackage ? <p className="document-package-note">This ZIP contains all {data.related.length} files listed below. View or download any single file, or download the complete ZIP above.</p> : <DocumentViewer key={data.item.pdfUrl} item={data.item} />}
     <DocumentInformation content={content} bytes={bytes} />
