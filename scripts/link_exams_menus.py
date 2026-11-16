@@ -1,9 +1,8 @@
 #!/usr/bin/env python3
 """Point each class hub's EXAMINATIONS menu at its own exam documents page.
 
-Classes whose exam files exist in the Fresh-Teacher/exams repository get a menu
-that opens the catalog page for that class; classes without files are left
-exactly as they are so their current links keep working.
+Every class opens its own catalog page, including empty collections that show
+the shared empty-folder state until exam files are available.
 """
 
 from __future__ import annotations
@@ -27,6 +26,13 @@ CLASSES = {
     "p5.html": ("p5", "P5"),
     "p6.html": ("p6", "P6"),
     "p.6.html": ("p6", "P6"),
+    "p7.html": ("p7", "P7"),
+    "s1.html": ("s1", "S1"),
+    "s2.html": ("s2", "S2"),
+    "s3.html": ("s3", "S3"),
+    "s4.html": ("s4", "S4"),
+    "s5.html": ("s5", "S5"),
+    "s6.html": ("s6", "S6"),
 }
 
 

@@ -61,10 +61,15 @@ describe('Class examinations pages', () => {
     expect(archive?.pdfUrl).toMatch(/\.zip$/);
   });
 
-  it('keeps a class without exam files on its audited destinations', () => {
-    expect(examsHrefForClass('p7')).toBeNull();
-    expect(EXAMS_REPOS['p7']).toBeUndefined();
-    expect(hrefsOf(p7Hub)[0]).not.toBe('/more/exams-p7');
-    expect(hrefsOf(p7Hub)[0]).toMatch(/\.html$/);
+  it.each(['p7', 's1', 's2', 's3', 's4', 's5', 's6'])('opens an empty examinations collection for %s', async key => {
+    const hubs = import.meta.glob<{ default: ClassHubData }>('@/data/class-hubs/*.json', { eager: true });
+    const hub = Object.entries(hubs).find(([path]) => path.endsWith(`/${key}.html.json`))?.[1].default;
+    expect(hub).toBeDefined();
+    expect(hub && examinations(hub)?.href).toBe(`/more/exams-${key}`);
+    expect(hub && hrefsOf(hub)).toEqual([]);
+    expect(examsHrefForClass(key)).toBe(`/more/exams-${key}`);
+    expect(EXAMS_REPOS[key]?.repo).toBe(`exams-${key}`);
+    expect(repos[`exams-${key}`]?.count).toBe(0);
+    expect(await loadRepositoryDocuments(`exams-${key}`)).toEqual([]);
   });
 });

@@ -45,9 +45,16 @@ export const EXAMS_REPOS: Record<string, MoreDocumentsRepo> = {
   p4: { repo: 'exams-p4', label: 'Primary Four Examinations' },
   p5: { repo: 'exams-p5', label: 'Primary Five Examinations' },
   p6: { repo: 'exams-p6', label: 'Primary Six Examinations' },
+  p7: { repo: 'exams-p7', label: 'Primary Seven Examinations' },
+  s1: { repo: 'exams-s1', label: 'Senior One Examinations' },
+  s2: { repo: 'exams-s2', label: 'Senior Two Examinations' },
+  s3: { repo: 'exams-s3', label: 'Senior Three Examinations' },
+  s4: { repo: 'exams-s4', label: 'Senior Four Examinations' },
+  s5: { repo: 'exams-s5', label: 'Senior Five Examinations' },
+  s6: { repo: 'exams-s6', label: 'Senior Six Examinations' },
 };
 
-/** Documents page for a class's exam collection, or null when that class has no files yet. */
+/** Documents page for a class's exam collection, including empty collections. */
 export function examsHrefForClass(key: string): string | null {
   const entry = EXAMS_REPOS[key.toLowerCase()];
   return entry ? moreDocumentsHref(entry.repo) : null;

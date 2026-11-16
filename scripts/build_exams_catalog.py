@@ -39,6 +39,13 @@ CLASSES: dict[str, tuple[str, str, str]] = {
     "P4": ("p4", "Primary Four", "Primary Four Examinations"),
     "P5": ("p5", "Primary Five", "Primary Five Examinations"),
     "P6": ("p6", "Primary Six", "Primary Six Examinations"),
+    "P7": ("p7", "Primary Seven", "Primary Seven Examinations"),
+    "S1": ("s1", "Senior One", "Senior One Examinations"),
+    "S2": ("s2", "Senior Two", "Senior Two Examinations"),
+    "S3": ("s3", "Senior Three", "Senior Three Examinations"),
+    "S4": ("s4", "Senior Four", "Senior Four Examinations"),
+    "S5": ("s5", "Senior Five", "Senior Five Examinations"),
+    "S6": ("s6", "Senior Six", "Senior Six Examinations"),
 }
 
 DOCUMENT_SUFFIXES = {".pdf", ".doc", ".docx", ".ppt", ".pptx", ".xls", ".xlsx", ".zip", ".rar", ".7z"}
@@ -118,9 +125,6 @@ def main() -> int:
              and Path(entry["path"]).suffix.lower() in DOCUMENT_SUFFIXES),
             key=lambda entry: entry["path"].lower(),
         )
-        if archive_blob is None and not files:
-            continue
-
         ordered: list[dict] = []
         if archive_blob is not None:
             ordered.append(archive_blob)
