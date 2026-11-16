@@ -1,4 +1,5 @@
 # Class examinations pages
+- [ ] Finish empty Examinations pages for P7 and S1–S6 and verify both class collection buttons.
 - [x] Point each class Examinations button at its own documents page listing every PDF, Word file and the full ZIP; 6 focused tests pass, and browser checks confirm the menu opens the page, the reader shows a real exam paper, and the ZIP opens its own download page. P7 and S1-S6 keep their audited destinations until files exist.
 
 # Instant dropdowns

@@ -9,11 +9,9 @@ import { documentExtension } from '@/lib/document-formats';
 import type { ClassHubData } from '@/lib/class-hubs';
 import baby from '@/data/class-hubs/baby.html.json';
 import p4 from '@/data/class-hubs/p4.html.json';
-import p7 from '@/data/class-hubs/p7.html.json';
 
 const babyHub = baby as ClassHubData;
 const p4Hub = p4 as ClassHubData;
-const p7Hub = p7 as ClassHubData;
 
 type RepoEntry = { label: string; data: string; count: number; commit: string };
 const repos = manifest.repositories as unknown as Record<string, RepoEntry>;
