@@ -852,3 +852,13 @@ a, button, [role="button"], summary, label { touch-action: manipulation; -webkit
 .library-ad-space { width: 300px; max-width: 100%; height: 250px; margin-inline: auto; }
 .library-ad-unit, .library-ad-placeholder { display: block; width: 100%; height: 250px; }
 .document-detail > .library-ad { margin-block: 48px; }
+
+/* Brand loader: app logo inside a rotating black/yellow/red ring (matches the logo's ring). */
+.logo-loader { border-radius:50%; overflow:hidden; background:#fff; }
+.logo-loader .logo-loader-image, .dg-thumb-loading .logo-loader-image, .dg-cards.dg-list .dg-thumb-loading .logo-loader-image, .page-loading-overlay .logo-loader-image { width:132%; height:132%; max-width:none; object-fit:cover; }
+.logo-loader-ring, .dg-thumb-loading .logo-loader-ring, .viewer-loading-overlay .logo-loader-ring, .document-reader-loading .logo-loader-ring {
+  z-index:1; border:0 !important; background:conic-gradient(#111 0 25%, #f5c400 25% 50%, #e3170a 50% 100%);
+  -webkit-mask:radial-gradient(farthest-side, transparent calc(100% - 4px), #000 calc(100% - 4px));
+  mask:radial-gradient(farthest-side, transparent calc(100% - 4px), #000 calc(100% - 4px));
+  animation:logo-loader-turn 1.1s linear infinite !important;
+}
