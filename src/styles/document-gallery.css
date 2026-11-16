@@ -98,3 +98,5 @@
 .dg-share-head { display:flex; align-items:center; justify-content:space-between; padding:2px 4px 6px 14px; font-size:15px; font-weight:600; color:var(--muted-foreground); }
 .dg-share-close { display:inline-flex; align-items:center; justify-content:center; width:36px; height:36px; border-radius:6px; color:var(--foreground); background:transparent; cursor:pointer; }
 .dg-share-close:hover, .dg-share-close:focus-visible { background:var(--catalog-active); color:var(--catalog-link); }
+
+.dg-empty__image { display:block; width:min(240px,70vw); height:auto; margin:0 auto 12px; }

@@ -17,6 +17,7 @@ import { documentPlaceholder } from '@/lib/document-placeholder';
 import styles from '@/styles/document-gallery.css?raw';
 import { AdBanner } from './ad-banner';
 import { showCatalogAd } from '@/lib/manual-ads';
+import emptyFolder from '@/assets/empty-folder.webp.asset.json';
 
 type Layout = 'grid' | 'list';
 type SizeBand = 'all' | 'small' | 'medium' | 'large';
@@ -221,7 +222,7 @@ export function DocumentGallery({ items, sourceItems = items, onView, query = ''
         </DropdownMenu>
       </div>
     </div>
-    {pageItems.length === 0 ? <div className="dg-empty" role="status">{filtered.length > 0 ? <p>{currentPage < totalPages ? 'Continue to the next page for more documents.' : 'You have reached the end of this catalog.'}</p> : <><p>No matching documents.</p>{suggestions.length > 0 && <div>Did you mean? {suggestions.map(value => <Button key={value} variant="source" size="source" className="dg-chip" onClick={() => onQueryChange?.(value)}>{value}</Button>)}</div>}<Button variant="source" size="source" className="dg-chip" onClick={reset}>Clear filters</Button></>}</div> :
+    {pageItems.length === 0 ? <div className="dg-empty" role="status">{items.length === 0 ? <><img className="dg-empty__image" src={emptyFolder.url} alt="Empty folder" width={240} height={240} /><p>Nothing here yet. Check back soon.</p></> : filtered.length > 0 ? <p>{currentPage < totalPages ? 'Continue to the next page for more documents.' : 'You have reached the end of this catalog.'}</p> : <><p>No matching documents.</p>{suggestions.length > 0 && <div>Did you mean? {suggestions.map(value => <Button key={value} variant="source" size="source" className="dg-chip" onClick={() => onQueryChange?.(value)}>{value}</Button>)}</div>}<Button variant="source" size="source" className="dg-chip" onClick={reset}>Clear filters</Button></>}</div> :
       <div className={`dg-cards dg-${layout}`}>{pageItems.map((item, index) => {
         return <Fragment key={`${item.pdfUrl}-${index}`}><article className="dg-card"><Link to="/doc/$slug" params={{ slug: documentSlug(item) }} search={search} className="dg-thumb-link" aria-label={`Open ${resourceTitle(item)}`}><Thumb url={item.pdfUrl} initialFeedback={index < 4} /></Link><div className="dg-card-body">
           <h3 className="dg-card-title"><Link to="/doc/$slug" params={{ slug: documentSlug(item) }} search={search}><HighlightedTitle item={item} query={query} /></Link></h3>

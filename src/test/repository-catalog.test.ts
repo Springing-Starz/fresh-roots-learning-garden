@@ -1,7 +1,7 @@
 import { describe, it, expect, vi } from 'vitest';
 import manifest from '@/data/catalog/repositories.json';
 import summary from '@/data/catalog/summary.json';
-import { MORE_DOCUMENTS, EXAMS_REPOS } from '@/data/more-documents';
+import { MORE_DOCUMENTS, EXAMS_REPOS, PACKAGES_REPO } from '@/data/more-documents';
 import { loadRepositoryDocuments } from '@/lib/repository-catalog';
 import { loadDocument } from '@/lib/document-catalog';
 import { documentSlug } from '@/lib/document-metadata';
@@ -9,9 +9,9 @@ import { searchLibrary } from '@/lib/library-search';
 import { resourceTitle } from '@/lib/resources';
 
 describe('Unified repository catalog', () => {
-  it('includes every one of the 59 menu repositories with all extracted references', async () => {
-    const targets = [...new Set([...Object.values(MORE_DOCUMENTS).flat().map(r => r.repo), ...Object.values(EXAMS_REPOS).map(r => r.repo)])];
-    expect(targets).toHaveLength(59);
+  it('includes every one of the 60 menu repositories with all extracted references', async () => {
+    const targets = [...new Set([...Object.values(MORE_DOCUMENTS).flat().map(r => r.repo), ...Object.values(EXAMS_REPOS).map(r => r.repo), PACKAGES_REPO.repo])];
+    expect(targets).toHaveLength(60);
     expect(Object.keys(manifest.repositories).sort()).toEqual(targets.sort());
     let count = 0;
     for (const repo of targets) {

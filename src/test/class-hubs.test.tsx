@@ -2,7 +2,7 @@ import { cleanup, fireEvent, render, screen } from '@testing-library/react';
 import { afterEach, describe, expect, it } from 'vitest';
 import { ClassHub } from '@/components/class-hub';
 import { addClassResourceMenus } from '@/lib/class-resource-menus';
-import { MORE_DOCUMENTS, examsHrefForClass, moreDocumentsClass, moreDocumentsHref } from '@/data/more-documents';
+import { MORE_DOCUMENTS, examsHrefForClass, moreDocumentsClass, moreDocumentsHref, packagesHref } from '@/data/more-documents';
 import type { ClassHubData } from '@/lib/class-hubs';
 import manifest from '@/data/legacy/manifest.json';
 import p7 from '@/data/class-hubs/p7.html.json';
@@ -33,7 +33,7 @@ describe('Direct class hub catalogs', () => {
         const key = moreDocumentsClass(path);
         const originalLinks = Array.from(group.querySelectorAll('ul a')).map(a => a.getAttribute('href'));
         const hrefs = menu.items.flatMap(item => 'href' in item ? [item.href] : []);
-        const exams = menu.label === 'EXAMINATIONS' && key ? examsHrefForClass(key) : null;
+        const exams = menu.label === 'EXAMINATIONS' && key ? examsHrefForClass(key) : menu.label === 'HOLIDAY PACKAGES' ? packagesHref() : null;
         if (exams) {
           // Classes with their own exam collection open that page directly as a plain button instead of the audited past-paper list.
           expect(menu.href, path).toBe(exams);

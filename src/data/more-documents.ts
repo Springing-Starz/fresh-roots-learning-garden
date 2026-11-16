@@ -53,11 +53,16 @@ export function examsHrefForClass(key: string): string | null {
   return entry ? moreDocumentsHref(entry.repo) : null;
 }
 
+/** Holiday Packages documents (Fresh-Teacher/packages), shared by every class page. */
+export const PACKAGES_REPO: MoreDocumentsRepo = { repo: 'packages', label: 'Holiday Packages' };
+export const packagesHref = () => moreDocumentsHref(PACKAGES_REPO.repo);
+
 export function findMoreDocumentsRepo(repo: string): MoreDocumentsRepo | null {
   for (const list of Object.values(MORE_DOCUMENTS)) {
     const hit = list.find(item => item.repo === repo);
     if (hit) return hit;
   }
+  if (repo === PACKAGES_REPO.repo) return PACKAGES_REPO;
   return Object.values(EXAMS_REPOS).find(item => item.repo === repo) ?? null;
 }
 
