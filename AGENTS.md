@@ -58,3 +58,7 @@ use the editor.
 
 ## Early interactions
 - Mark class and legacy dropdown triggers with `data-toggle="dropdown"`; keep the inline early-tap script and its typed test implementation synchronized and support both direct menus and reveal wrappers so static first taps work before hydration.
+
+<!-- AGENT-MEMORY:BEGIN -->
+- Scope document and information-page typography with explicit pixel sizes rather than root-relative units; imported legacy styles intentionally use a 10px root and must not shrink modern page text.
+<!-- AGENT-MEMORY:END -->
